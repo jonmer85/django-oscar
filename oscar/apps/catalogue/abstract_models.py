@@ -501,7 +501,7 @@ class AbstractProduct(models.Model):
         prices = []
         for child in self.children.all():
             if child.has_stockrecords:
-                prices.append(getattr(child.stockrecord, property))
+                prices.append(getattr(child.stockrecords.all()[0], property))
         if not prices:
             return None
         prices.sort()
